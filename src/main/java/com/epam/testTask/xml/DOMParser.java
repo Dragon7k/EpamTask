@@ -24,7 +24,7 @@ public class DOMParser {
         for (int i = 0; i < rootChild.getLength(); i++) {
 
             if (rootChild.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                /*System.out.println(rootChild.item(i).getNodeName());*/
+
                 switch (rootChild.item(i).getNodeName()) {
                     case "Phone":
 
@@ -38,8 +38,8 @@ public class DOMParser {
                                     case "name":
                                         phone.setName(childNode.item(j).getTextContent());
                                         break;
-                                    case "coast":
-                                        phone.setCoast(Integer.parseInt(childNode.item(j).getTextContent()));
+                                    case "cost":
+                                        phone.setCost(Integer.parseInt(childNode.item(j).getTextContent()));
                                         break;
                                     case "weight":
                                         phone.setWeight(Integer.parseInt(childNode.item(j).getTextContent()));
@@ -66,8 +66,8 @@ public class DOMParser {
                                     case "name":
                                         desktopComputer.setName(childNode.item(j).getTextContent());
                                         break;
-                                    case "coast":
-                                        desktopComputer.setCoast(Integer.parseInt(childNode.item(j).getTextContent()));
+                                    case "cost":
+                                        desktopComputer.setCost(Integer.parseInt(childNode.item(j).getTextContent()));
                                         break;
                                     case "weight":
                                         desktopComputer.setWeight(Integer.parseInt(childNode.item(j).getTextContent()));
@@ -96,8 +96,8 @@ public class DOMParser {
                                     case "name":
                                         tablet.setName(childNode.item(j).getTextContent());
                                         break;
-                                    case "coast":
-                                        tablet.setCoast(Integer.parseInt(childNode.item(j).getTextContent()));
+                                    case "cost":
+                                        tablet.setCost(Integer.parseInt(childNode.item(j).getTextContent()));
                                         break;
                                     case "weight":
                                         tablet.setWeight(Integer.parseInt(childNode.item(j).getTextContent()));

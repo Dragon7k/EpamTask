@@ -2,6 +2,7 @@ package com.epam.testTask;
 
 import com.epam.testTask.model.Company;
 import com.epam.testTask.xml.DOMParser;
+import com.epam.testTask.xml.XMLFileWriter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -41,6 +42,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("count of employee: ");
         Company company = new Company(scanner.nextInt(),domParser.getDeviceList());
+
+        XMLFileWriter xmlFileWriter = new XMLFileWriter(company);
+        xmlFileWriter.toXML();
 
 
 

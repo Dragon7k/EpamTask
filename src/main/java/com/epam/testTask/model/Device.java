@@ -3,13 +3,13 @@ package com.epam.testTask.model;
 
 public abstract class Device {
     protected String name;
-    protected int coast;
+    protected int cost;
     protected int weight;
 
-    public Device(String name, int coast, int weight) {
+    public Device(String name, int cost, int weight) {
         super();
         this.name = name;
-        this.coast = coast;
+        this.cost = cost;
         this.weight = weight;
     }
 
@@ -24,12 +24,12 @@ public abstract class Device {
         this.name = name;
     }
 
-    public int getCoast() {
-        return coast;
+    public int getCost() {
+        return cost;
     }
 
-    public void setCoast(int coast) {
-        this.coast = coast;
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     public int getWeight() {

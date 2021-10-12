@@ -3,20 +3,20 @@
 <Devices>
     <Phone>
         <name>Xiaomi</name>
-        <coast>400</coast>
+        <cost>400</cost>
         <weight>200</weight>
         <model>mi5</model>
     </Phone>
     <DesktopComputer>
         <name>Lenovo</name>
-        <coast>2000</coast>
+        <cost>2000</cost>
         <weight>10000</weight>
         <cpuModel>AMD</cpuModel>
         <gpuModel>Nvidia</gpuModel>
     </DesktopComputer>
     <Tablet>
         <name>Samsung</name>
-        <coast>500</coast>
+        <cost>500</cost>
         <weight>600</weight>
         <cpuModel>Exynos</cpuModel>
         <resolution>11</resolution>
