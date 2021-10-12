@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Devices>
+    <Phone>
+        <name>Xiaomi</name>
+        <coast>400</coast>
+        <weight>200</weight>
+        <model>mi5</model>
+    </Phone>
+    <DesktopComputer>
+        <name>Lenovo</name>
+        <coast>2000</coast>
+        <weight>10000</weight>
+        <cpuModel>AMD</cpuModel>
+        <gpuModel>Nvidia</gpuModel>
+    </DesktopComputer>
+    <Tablet>
+        <name>Samsung</name>
+        <coast>500</coast>
+        <weight>600</weight>
+        <cpuModel>Exynos</cpuModel>
+        <resolution>11</resolution>
+    </Tablet>
+
+</Devices>
