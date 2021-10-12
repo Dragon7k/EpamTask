@@ -1,9 +1,6 @@
 package com.epam.testTask.xml;
 
-import com.epam.testTask.model.DesktopComputer;
-import com.epam.testTask.model.Device;
-import com.epam.testTask.model.Phone;
-import com.epam.testTask.model.Tablet;
+import com.epam.testTask.model.*;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -19,110 +16,91 @@ public class DOMParser {
         return deviceList;
     }
 
-    public List<Device> parceDevices(NodeList rootChild) {
+    public void parceDevices(NodeList rootChild) {
 
         for (int i = 0; i < rootChild.getLength(); i++) {
 
             if (rootChild.item(i).getNodeType() == Node.ELEMENT_NODE) {
 
+                childNode = rootChild.item(i).getChildNodes();
                 switch (rootChild.item(i).getNodeName()) {
-                    case "Phone":
-
-                        Phone phone = new Phone();
-                        childNode = rootChild.item(i).getChildNodes();
-                        for (int j = 0; j < childNode.getLength(); j++) {
+                    case "Phone" ->  /*for (int j = 0; j < childNode.getLength(); j++) {
                             if (childNode.item(j).getNodeType() == Node.ELEMENT_NODE) {
 
                                 switch (childNode.item(j).getNodeName()) {
-
-                                    case "name":
-                                        phone.setName(childNode.item(j).getTextContent());
-                                        break;
-                                    case "cost":
-                                        phone.setCost(Integer.parseInt(childNode.item(j).getTextContent()));
-                                        break;
-                                    case "weight":
-                                        phone.setWeight(Integer.parseInt(childNode.item(j).getTextContent()));
-                                        break;
-                                    case "model":
-                                        phone.setModel(childNode.item(j).getTextContent());
-                                        break;
-
+                                    case "name" -> phone.setName(childNode.item(j).getTextContent());
+                                    case "cost" -> phone.setCost(Integer.parseInt(childNode.item(j).getTextContent()));
+                                    case "weight" -> phone.setWeight(Integer.parseInt(childNode.item(j).getTextContent()));
+                                    case "model" -> phone.setModel(childNode.item(j).getTextContent());
                                 }
 
                             }
 
-                        }
-                        deviceList.add(phone);
-                        break;
+                        }*/  deviceList.add(setValue(new Phone(), childNode));
 
-                    case "DesktopComputer":
-                        DesktopComputer desktopComputer = new DesktopComputer();
+                    case "DesktopComputer" -> /* DesktopComputer desktopComputer = new DesktopComputer();
+
                         childNode = rootChild.item(i).getChildNodes();
-                        for (int j = 0; j < childNode.getLength(); j++) {
+                        setValue(desktopComputer,childNode);*//* for (int j = 0; j < childNode.getLength(); j++) {
                             if (childNode.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                                setValue(desktopComputer,childNode);
                                 switch (childNode.item(j).getNodeName()) {
-
-                                    case "name":
-                                        desktopComputer.setName(childNode.item(j).getTextContent());
-                                        break;
-                                    case "cost":
-                                        desktopComputer.setCost(Integer.parseInt(childNode.item(j).getTextContent()));
-                                        break;
-                                    case "weight":
-                                        desktopComputer.setWeight(Integer.parseInt(childNode.item(j).getTextContent()));
-                                        break;
-                                    case "cpuModel":
-                                        desktopComputer.setCpuModel(childNode.item(j).getTextContent());
-                                        break;
-                                    case "gpuModel":
-                                        desktopComputer.setGpuModel(childNode.item(j).getTextContent());
-                                        break;
-
+                                    case "cpuModel" -> desktopComputer.setCpuModel(childNode.item(j).getTextContent());
+                                    case "gpuModel" -> desktopComputer.setGpuModel(childNode.item(j).getTextContent());
                                 }
 
                             }
-                        }
-                        deviceList.add(desktopComputer);
-                        break;
+                        }*/ deviceList.add(setValue(new DesktopComputer(), childNode));
 
-                    case "Tablet":
-                        Tablet tablet = new Tablet();
-                        childNode = rootChild.item(i).getChildNodes();
-                        for (int j = 0; j < childNode.getLength(); j++) {
+                    case "Tablet" ->/*for (int j = 0; j < childNode.getLength(); j++) {
                             if (childNode.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                                setValue(tablet,childNode);
                                 switch (childNode.item(j).getNodeName()) {
-
-                                    case "name":
-                                        tablet.setName(childNode.item(j).getTextContent());
-                                        break;
-                                    case "cost":
-                                        tablet.setCost(Integer.parseInt(childNode.item(j).getTextContent()));
-                                        break;
-                                    case "weight":
-                                        tablet.setWeight(Integer.parseInt(childNode.item(j).getTextContent()));
-                                        break;
-                                    case "cpuModel":
-                                        tablet.setCpuModel(childNode.item(j).getTextContent());
-                                        break;
-                                    case "gpuModel":
-                                        tablet.setResolution(Integer.parseInt(childNode.item(j).getTextContent()));
-                                        break;
-
+                                    case "cpuModel" -> tablet.setCpuModel(childNode.item(j).getTextContent());
+                                    case "resolution" -> tablet.setResolution(Integer.parseInt(childNode.item(j).getTextContent()));
                                 }
                             }
 
-                        }
-                        deviceList.add(tablet);
-                        break;
+                        }*/deviceList.add(setValue(new Tablet(), childNode));
 
                 }
             }
+        }
+    }
 
+
+    public Device setValue(Device device, NodeList nodeList) {
+
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            switch (nodeList.item(i).getNodeName()) {
+                case "name" -> device.setName(childNode.item(i).getTextContent());
+                case "cost" -> device.setCost(Integer.parseInt(childNode.item(i).getTextContent()));
+                case "weight" -> device.setWeight(Integer.parseInt(childNode.item(i).getTextContent()));
+                case "model" -> {
+                    if (device instanceof Phone) {
+                        ((Phone) device).setModel(childNode.item(i).getTextContent());
+                    }
+                }
+                case "cpuModel" -> {
+                    if (device instanceof Computer) {
+                        ((Computer) device).setCpuModel(childNode.item(i).getTextContent());
+                    }
+                }
+                case "gpuModel" -> {
+                    if (device instanceof DesktopComputer) {
+                        ((DesktopComputer) device).setGpuModel(childNode.item(i).getTextContent());
+                    }
+                }
+                case "resolution" -> {
+                    if (device instanceof Tablet) {
+                        ((Tablet) device).setResolution(Integer.parseInt(childNode.item(i).getTextContent()));
+                    }
+                }
+            }
         }
 
-
-        return deviceList;
+        return device;
     }
+
 
 }

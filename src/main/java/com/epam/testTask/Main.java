@@ -19,7 +19,7 @@ public class Main {
     private static Node rootNode = null;
     private static NodeList rootChild = null;
     public static void main(String[] args) {
-             Document document = null;
+        Document document = null;
         try {
             document = buildDocument();
         } catch (Exception e) {
@@ -43,8 +43,8 @@ public class Main {
         System.out.println("count of employee: ");
         Company company = new Company(scanner.nextInt(),domParser.getDeviceList());
 
-        XMLFileWriter xmlFileWriter = new XMLFileWriter(company);
-        xmlFileWriter.toXML();
+        new XMLFileWriter(company).toXML();
+
 
 
 
