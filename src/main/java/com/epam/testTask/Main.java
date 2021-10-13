@@ -2,6 +2,7 @@ package com.epam.testTask;
 
 import com.epam.testTask.model.Company;
 import com.epam.testTask.xml.DOMParser;
+import com.epam.testTask.xml.PreparingChild;
 import com.epam.testTask.xml.XMLFileReader;
 import com.epam.testTask.xml.XMLFileWriter;
 import org.w3c.dom.Document;
@@ -16,25 +17,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    private static Node rootNode = null;
-    private static NodeList rootChild = null;
-    private static Document document = null;
+
 
     public static void main(String[] args) {
-
-        XMLFileReader xmlFileReader = new XMLFileReader("src/main/resources/input.xml");
-        try {
-            document = xmlFileReader.buildDocument();
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            e.printStackTrace();
-        }
-
-        if (document != null) {
-            rootNode = document.getFirstChild();
-        }
-        if (rootNode != null) {
-            rootChild = rootNode.getChildNodes();
-        }
+        NodeList rootChild = PreparingChild.prepare();
 
         DOMParser domParser = new DOMParser();
         if (rootChild != null) {
@@ -48,5 +34,6 @@ public class Main {
         new XMLFileWriter(company).toXML();
 
     }
+
 
 }
