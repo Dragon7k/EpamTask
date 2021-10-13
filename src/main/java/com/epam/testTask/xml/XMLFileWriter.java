@@ -31,8 +31,12 @@ public class XMLFileWriter {
             Document out = docBuilder.newDocument();
             Element rootElem = out.createElement("Devices");
             out.appendChild(rootElem);
-            for (Device dev : company.getDevices()) {
-                rootElem.appendChild(createNode(dev, dev.getClass().getSimpleName(), out));
+            if(company.getDevices()!=null){
+                for (Device dev : company.getDevices()) {
+                    rootElem.appendChild(createNode(dev, dev.getClass().getSimpleName(), out));
+                }
+            }else{
+                return;
             }
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();

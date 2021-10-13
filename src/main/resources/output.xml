@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Devices>
-    <Phone cost="1600" weight="800"/>
-    <DesktopComputer cost="8000" weight="40000"/>
-    <Tablet cost="2000" weight="2400"/>
+    <Phone cost="2000" weight="1000"/>
+    <DesktopComputer cost="10000" weight="50000"/>
+    <Tablet cost="2500" weight="3000"/>
 </Devices>

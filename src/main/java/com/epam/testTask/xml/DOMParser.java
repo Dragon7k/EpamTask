@@ -17,9 +17,10 @@ public class DOMParser {
     public void parseDevices(NodeList rootChild) {
         NodeList childNode;
         for (int i = 0; i < rootChild.getLength(); i++) {
-            if (rootChild.item(i).getNodeType() == Node.ELEMENT_NODE) {
-                childNode = rootChild.item(i).getChildNodes();
-                switch (rootChild.item(i).getNodeName()) {
+            Node root = rootChild.item(i);
+            if (root.getNodeType() == Node.ELEMENT_NODE) {
+                childNode = root.getChildNodes();
+                switch (root.getNodeName()) {
                     case "Phone" -> deviceList.add(setValue(new Phone(), childNode));
                     case "DesktopComputer" -> deviceList.add(setValue(new DesktopComputer(), childNode));
                     case "Tablet" -> deviceList.add(setValue(new Tablet(), childNode));
@@ -29,10 +30,9 @@ public class DOMParser {
     }
 
     public Device setValue(Device device, NodeList root) {
-        Node childNode;
         for (int i = 0; i < root.getLength(); i++) {
-            childNode = root.item(i);
-            switch (root.item(i).getNodeName()) {
+            Node childNode = root.item(i);
+            switch (childNode.getNodeName()) {
                 case "name" -> device.setName(childNode.getTextContent());
                 case "cost" -> device.setCost(Integer.parseInt(childNode.getTextContent()));
                 case "weight" -> device.setWeight(Integer.parseInt(childNode.getTextContent()));
