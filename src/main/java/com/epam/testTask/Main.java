@@ -15,9 +15,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-
     private static Node rootNode = null;
     private static NodeList rootChild = null;
+
+
     public static void main(String[] args) {
         Document document = null;
         try {
@@ -36,7 +37,7 @@ public class Main {
 
         DOMParser domParser = new DOMParser();
         if (rootChild != null) {
-            domParser.parceDevices(rootChild);
+            domParser.parseDevices(rootChild);
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -44,9 +45,6 @@ public class Main {
         Company company = new Company(scanner.nextInt(),domParser.getDeviceList());
 
         new XMLFileWriter(company).toXML();
-
-
-
 
     }
 
