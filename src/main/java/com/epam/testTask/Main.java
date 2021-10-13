@@ -10,9 +10,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        PreparingChild preparingChild = new PreparingChild("src/main/resources/input.xml");
-        preparingChild.prepare();
-        NodeList rootChild = preparingChild.getRootChild();
+        NodeList rootChild = new PreparingChild("src/main/resources/input.xml").prepare();
         DOMParser domParser = new DOMParser();
         if (rootChild != null) {
             domParser.parseDevices(rootChild);

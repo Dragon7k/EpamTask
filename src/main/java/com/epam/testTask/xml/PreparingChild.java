@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.Optional;
 
 public class PreparingChild {
     private String fileName;
@@ -14,10 +15,8 @@ public class PreparingChild {
     public PreparingChild(String fileName) {
         this.fileName = fileName;
     }
-    public NodeList getRootChild() {
-        return rootChild;
-    }
-    public void prepare() {
+
+    public NodeList prepare() {
         Node rootNode;
         Document document;
 
@@ -26,17 +25,19 @@ public class PreparingChild {
             document = xmlFileReader.buildDocument();
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
-            return;
+            return null;
         }
         if (document != null) {
             rootNode = document.getFirstChild();
         } else {
-            return;
+            return null;
         }
         if (rootNode != null) {
             rootChild = rootNode.getChildNodes();
         } else {
-            return;
+            return null;
         }
+
+        return rootChild;
     }
 }
