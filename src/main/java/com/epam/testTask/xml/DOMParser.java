@@ -19,8 +19,8 @@ public class DOMParser {
             if (rootChild.item(i).getNodeType() == Node.ELEMENT_NODE) {
                 childNode = rootChild.item(i).getChildNodes();
                 switch (rootChild.item(i).getNodeName()) {
-                    case "Phone" ->    deviceList.add(setValue(new Phone(), childNode));
-                    case "DesktopComputer" ->  deviceList.add(setValue(new DesktopComputer(), childNode));
+                    case "Phone" -> deviceList.add(setValue(new Phone(), childNode));
+                    case "DesktopComputer" -> deviceList.add(setValue(new DesktopComputer(), childNode));
                     case "Tablet" ->deviceList.add(setValue(new Tablet(), childNode));
                 }
             }

@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class XMLFileReader {
-    private String fileName;
+    private final String fileName;
 
     public XMLFileReader(String fileName) {
         this.fileName = fileName;
