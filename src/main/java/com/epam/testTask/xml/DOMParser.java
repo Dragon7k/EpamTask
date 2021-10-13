@@ -28,7 +28,6 @@ public class DOMParser {
     }
 
     public Device setValue(Device device, NodeList nodeList) {
-
         for (int i = 0; i < nodeList.getLength(); i++) {
             switch (nodeList.item(i).getNodeName()) {
                 case "name" -> device.setName(childNode.item(i).getTextContent());

@@ -2,6 +2,7 @@ package com.epam.testTask;
 
 import com.epam.testTask.model.Company;
 import com.epam.testTask.xml.DOMParser;
+import com.epam.testTask.xml.XMLFileReader;
 import com.epam.testTask.xml.XMLFileWriter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -17,20 +18,20 @@ import java.util.Scanner;
 public class Main {
     private static Node rootNode = null;
     private static NodeList rootChild = null;
-
+    private static Document document = null;
 
     public static void main(String[] args) {
-        Document document = null;
+
+        XMLFileReader xmlFileReader = new XMLFileReader("src/main/resources/input.xml");
         try {
-            document = buildDocument();
-        } catch (Exception e) {
+            document = xmlFileReader.buildDocument();
+        } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
         }
 
         if (document != null) {
             rootNode = document.getFirstChild();
         }
-
         if (rootNode != null) {
             rootChild = rootNode.getChildNodes();
         }
@@ -42,18 +43,10 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("count of employee: ");
-        Company company = new Company(scanner.nextInt(),domParser.getDeviceList());
+        Company company = new Company(scanner.nextInt(), domParser.getDeviceList());
 
         new XMLFileWriter(company).toXML();
 
     }
 
-
-
-
-    private static Document buildDocument() throws ParserConfigurationException, IOException, SAXException {
-        File file = new File("src/main/resources/input.xml");
-        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        return documentBuilderFactory.newDocumentBuilder().parse(file);
-    }
 }
