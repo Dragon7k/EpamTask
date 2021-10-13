@@ -10,6 +10,7 @@ import java.util.List;
 public class DOMParser {
     private NodeList childNode;
     private List<Device> deviceList = new ArrayList<>();
+
     public List<Device> getDeviceList() {
         return deviceList;
     }
@@ -21,7 +22,7 @@ public class DOMParser {
                 switch (rootChild.item(i).getNodeName()) {
                     case "Phone" -> deviceList.add(setValue(new Phone(), childNode));
                     case "DesktopComputer" -> deviceList.add(setValue(new DesktopComputer(), childNode));
-                    case "Tablet" ->deviceList.add(setValue(new Tablet(), childNode));
+                    case "Tablet" -> deviceList.add(setValue(new Tablet(), childNode));
                 }
             }
         }
