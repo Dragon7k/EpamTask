@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DOMParser {
-    private NodeList childNode;
-    private List<Device> deviceList = new ArrayList<>();
 
+    private List<Device> deviceList = new ArrayList<>();
     public List<Device> getDeviceList() {
         return deviceList;
     }
 
     public void parseDevices(NodeList rootChild) {
+        NodeList childNode;
         for (int i = 0; i < rootChild.getLength(); i++) {
             if (rootChild.item(i).getNodeType() == Node.ELEMENT_NODE) {
                 childNode = rootChild.item(i).getChildNodes();
@@ -28,30 +28,32 @@ public class DOMParser {
         }
     }
 
-    public Device setValue(Device device, NodeList nodeList) {
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            switch (nodeList.item(i).getNodeName()) {
-                case "name" -> device.setName(childNode.item(i).getTextContent());
-                case "cost" -> device.setCost(Integer.parseInt(childNode.item(i).getTextContent()));
-                case "weight" -> device.setWeight(Integer.parseInt(childNode.item(i).getTextContent()));
+    public Device setValue(Device device, NodeList root) {
+        Node childNode;
+        for (int i = 0; i < root.getLength(); i++) {
+            childNode = root.item(i);
+            switch (root.item(i).getNodeName()) {
+                case "name" -> device.setName(childNode.getTextContent());
+                case "cost" -> device.setCost(Integer.parseInt(childNode.getTextContent()));
+                case "weight" -> device.setWeight(Integer.parseInt(childNode.getTextContent()));
                 case "model" -> {
                     if (device instanceof Phone) {
-                        ((Phone) device).setModel(childNode.item(i).getTextContent());
+                        ((Phone) device).setModel(childNode.getTextContent());
                     }
                 }
                 case "cpuModel" -> {
                     if (device instanceof Computer) {
-                        ((Computer) device).setCpuModel(childNode.item(i).getTextContent());
+                        ((Computer) device).setCpuModel(childNode.getTextContent());
                     }
                 }
                 case "gpuModel" -> {
                     if (device instanceof DesktopComputer) {
-                        ((DesktopComputer) device).setGpuModel(childNode.item(i).getTextContent());
+                        ((DesktopComputer) device).setGpuModel(childNode.getTextContent());
                     }
                 }
                 case "resolution" -> {
                     if (device instanceof Tablet) {
-                        ((Tablet) device).setResolution(Integer.parseInt(childNode.item(i).getTextContent()));
+                        ((Tablet) device).setResolution(Integer.parseInt(childNode.getTextContent()));
                     }
                 }
             }

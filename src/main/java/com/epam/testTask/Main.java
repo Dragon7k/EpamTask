@@ -9,23 +9,17 @@ import org.w3c.dom.NodeList;
 import java.util.Scanner;
 
 public class Main {
-
-
     public static void main(String[] args) {
-        NodeList rootChild = PreparingChild.prepare();
-
+        PreparingChild preparingChild = new PreparingChild("src/main/resources/input.xml");
+        preparingChild.prepare();
+        NodeList rootChild = preparingChild.getRootChild();
         DOMParser domParser = new DOMParser();
         if (rootChild != null) {
             domParser.parseDevices(rootChild);
         }
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("count of employee: ");
         Company company = new Company(scanner.nextInt(), domParser.getDeviceList());
-
-        new XMLFileWriter(company).toXML();
-
+        new XMLFileWriter(company,"src/main/resources/output.xml").toXML();
     }
-
-
 }

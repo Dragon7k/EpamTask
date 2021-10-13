@@ -9,27 +9,34 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 public class PreparingChild {
-    private static Node rootNode = null;
-    private static NodeList rootChild = null;
-    private static Document document = null;
+    private String fileName;
+    private NodeList rootChild;
+    public PreparingChild(String fileName) {
+        this.fileName = fileName;
+    }
+    public NodeList getRootChild() {
+        return rootChild;
+    }
+    public void prepare() {
+        Node rootNode;
+        Document document;
 
-    public static NodeList prepare(){
-
-        XMLFileReader xmlFileReader = new XMLFileReader("src/main/resources/input.xml");
+        XMLFileReader xmlFileReader = new XMLFileReader(fileName);
         try {
             document = xmlFileReader.buildDocument();
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
+            return;
         }
-
         if (document != null) {
             rootNode = document.getFirstChild();
+        } else {
+            return;
         }
         if (rootNode != null) {
             rootChild = rootNode.getChildNodes();
+        } else {
+            return;
         }
-
-        return rootChild;
-
     }
 }
