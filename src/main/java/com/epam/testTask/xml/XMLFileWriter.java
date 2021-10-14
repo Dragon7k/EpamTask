@@ -20,10 +20,12 @@ import java.io.File;
 public class XMLFileWriter {
     private Company company;
     private String fileOut;
+
     public XMLFileWriter(Company company,String fileOut) {
         this.company = company;
         this.fileOut = fileOut;
     }
+
     public void toXML(){
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -47,6 +49,7 @@ public class XMLFileWriter {
             e.printStackTrace();
         }
     }
+
     private Element createNode(Device device, String name, Document doc){
         Element out = doc.createElement(name);
         Attr cost = doc.createAttribute("cost");
