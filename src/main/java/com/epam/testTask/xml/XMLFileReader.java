@@ -24,25 +24,17 @@ public class XMLFileReader {
     }
 
     public NodeList prepare() {
-        NodeList rootChild;
-        Node rootNode;
-        Document document;
         try {
-            document = buildDocument();
+            Document document = buildDocument();
+            if (document != null) {
+                Node rootNode = document.getFirstChild();
+                if(rootNode!=null){
+                    return rootNode.getChildNodes();
+                }
+            }
         } catch (ParserConfigurationException | IOException | SAXException e) {
             e.printStackTrace();
-            return null;
         }
-        if (document != null) {
-            rootNode = document.getFirstChild();
-        } else {
-            return null;
-        }
-        if (rootNode != null) {
-            rootChild = rootNode.getChildNodes();
-        } else {
-            return null;
-        }
-        return rootChild;
+        return null;
     }
 }
