@@ -16,11 +16,10 @@ public class DOMParser {
     }
 
     public void parseDevices(NodeList rootChild) {
-        NodeList childNode;
         for (int i = 0; i < rootChild.getLength(); i++) {
             Node root = rootChild.item(i);
             if (root.getNodeType() == Node.ELEMENT_NODE) {
-                childNode = root.getChildNodes();
+                NodeList childNode = root.getChildNodes();
                 switch (root.getNodeName()) {
                     case "Phone" -> deviceList.add(setValue(new Phone(), childNode));
                     case "DesktopComputer" -> deviceList.add(setValue(new DesktopComputer(), childNode));
