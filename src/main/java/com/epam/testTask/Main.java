@@ -14,12 +14,12 @@ public class Main {
         DOMParser domParser = new DOMParser();
         if (rootChild != null) {
             domParser.parseDevices(rootChild);
-        }else {
+        } else {
             return;
         }
         Scanner scanner = new Scanner(System.in);
         System.out.println("count of employee: ");
         Company company = new Company(scanner.nextInt(), domParser.getDeviceList());
-        new XMLFileWriter(company,"src/main/resources/output.xml").toXML();
+        new XMLFileWriter(company, "src/main/resources/output.xml").toXML();
     }
 }
