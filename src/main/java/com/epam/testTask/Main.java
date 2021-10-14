@@ -11,12 +11,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         NodeList rootChild = new XMLFileReader("src/main/resources/input.xml").prepare();
-        DOMParser domParser = new DOMParser();
-        if (rootChild != null) {
-            domParser.parseDevices(rootChild);
-        } else {
+        if (rootChild==null){
             return;
         }
+        DOMParser domParser = new DOMParser();
+        domParser.parseDevices(rootChild);
         Scanner scanner = new Scanner(System.in);
         System.out.println("count of employee: ");
         Company company = new Company(scanner.nextInt(), domParser.getDeviceList());
