@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class XMLFileReader {
-    private NodeList rootChild;
     private final String fileName;
 
     public XMLFileReader(String fileName) {
@@ -25,6 +24,7 @@ public class XMLFileReader {
     }
 
     public NodeList prepare() {
+        NodeList rootChild;
         Node rootNode;
         Document document;
         try {
