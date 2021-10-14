@@ -28,7 +28,7 @@ public class XMLFileReader {
             Document document = buildDocument();
             if (document != null) {
                 Node rootNode = document.getFirstChild();
-                if(rootNode!=null){
+                if (rootNode != null) {
                     return rootNode.getChildNodes();
                 }
             }

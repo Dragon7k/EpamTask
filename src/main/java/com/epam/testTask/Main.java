@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         NodeList rootChild = new XMLFileReader("src/main/resources/input.xml").prepare();
-        if (rootChild==null){
+        if (rootChild == null) {
             return;
         }
         DOMParser domParser = new DOMParser();
